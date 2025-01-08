@@ -41,9 +41,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
+          docker build -t ghcr.io/ashav1309/${{ secrets.DOCKER_IMAGE }}:latest
+          # docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
           # docker push ${{ secrets.DOCKER_IMAGE }}
-          docker push ghcr.io/ashav1309/${{ secrets.DOCKER_IMAGE }}:latest
+          # docker push ghcr.io/ashav1309/${{ secrets.DOCKER_IMAGE }}:latest
           
   build_package:
     runs-on: ubuntu-latest
