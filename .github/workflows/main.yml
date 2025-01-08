@@ -65,7 +65,8 @@ jobs:
       - name: Build Python package
         run: |
           source venv/bin/activate
-          python setup.py sdist bdist_wheel
+          # python setup.py sdist bdist_wheel
+          python setup.py sdist
           ls -la dist  # Выводим содержимое директории dist
 
       - name: Upload package artifacts
