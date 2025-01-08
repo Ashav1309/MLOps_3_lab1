@@ -75,15 +75,12 @@ jobs:
           name: python-packages
           path: dist/*
 
-      - name: Install Twine
+      - name: Publish package to PyPI Registry
         run: |
           python -m venv venv
           source venv/bin/activate
           pip install twine
-
-      - name: Publish package to PyPI Registry
-        run: |
-          source venv/bin/activate
+          poetry publish -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
           twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
           
   docs:
