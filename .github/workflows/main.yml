@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Log in to Docker Registry
-        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u Deployer --password-stdin registry.gitlab.com
+        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u Deployer --password-stdin registry.github.com
 
       - name: Build Docker image
         run: |
