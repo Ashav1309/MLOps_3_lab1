@@ -36,10 +36,10 @@ def missing_values_analysis(df: pd.DataFrame):
     else:
         # Building a bar chart to visualize missing values
         plt.figure(figsize=(10, 6))
-        missing_values[missing_values > 0].plot(kind='bar')
-        plt.title('Missing values ​​by columns')
-        plt.xlabel('Columns')
-        plt.ylabel('Number of missing values')
+        missing_values[missing_values > 0].plot(kind="bar")
+        plt.title("Missing values ​​by columns")
+        plt.xlabel("Columns")
+        plt.ylabel("Number of missing values")
         plt.show()
 
 
@@ -52,7 +52,7 @@ def plotting_pairwise_diagrams(df: pd.DataFrame):
     """
 
     # Plotting pairwise distribution diagrams
-    sns.pairplot(df, vars=['Income', 'Age', 'Loan', 'Default'], hue='Default')
+    sns.pairplot(df, vars=["Income", "Age", "Loan", "Default"], hue="Default")
     plt.show()
 
 
@@ -69,8 +69,8 @@ def сorrelation_analysis(df: pd.DataFrame):
 
     # Visualizing the correlation matrix using heatmap
     plt.figure(figsize=(10, 8))
-    sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap='coolwarm', square=True)
-    plt.title('Correlation matrix')
+    sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", square=True)
+    plt.title("Correlation matrix")
     plt.show()
 
 
@@ -83,15 +83,15 @@ def class_balance_analysis(df: pd.DataFrame):
     """
 
     # Class balance analysis
-    class_distribution = df['Default'].value_counts()
+    class_distribution = df["Default"].value_counts()
 
     # Visualization of class distribution
     plt.figure(figsize=(8, 5))
-    class_distribution.plot(kind='bar')
-    plt.title('Class Distribution (Default/Not Default)')
-    plt.xlabel('Class')
-    plt.ylabel('Quantity')
-    plt.xticks(ticks=[0, 1], labels=['Not Default', 'Default'], rotation=0)
+    class_distribution.plot(kind="bar")
+    plt.title("Class Distribution (Default/Not Default)")
+    plt.xlabel("Class")
+    plt.ylabel("Quantity")
+    plt.xticks(ticks=[0, 1], labels=["Not Default", "Default"], rotation=0)
     plt.show()
 
 
