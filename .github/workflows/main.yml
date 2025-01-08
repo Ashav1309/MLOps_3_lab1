@@ -44,7 +44,7 @@ jobs:
           docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
           docker push ${{ secrets.DOCKER_IMAGE }}
           
-  build_package:
+  build_and_publish_package:
     runs-on: ubuntu-latest
     needs: lint
     steps:
@@ -84,36 +84,9 @@ jobs:
       - name: Publish package to PyPI Registry
         run: |
           source venv/bin/activate
-          twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
+          # twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
+          twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
           
-  # publish_package:
-  #   runs-on: ubuntu-latest
-  #   needs: build_package
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.11'
-
-  #     - name: Download package artifacts
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: python-packages
-
-  #     - name: Install Twine
-  #       run: |
-  #         python -m venv venv
-  #         source venv/bin/activate
-  #         pip install twine
-
-  #     - name: Publish package to PyPI Registry
-  #       run: |
-  #         source venv/bin/activate
-  #         twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
-
   docs:
     runs-on: ubuntu-latest
     needs: lint
