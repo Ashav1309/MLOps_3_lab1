@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Log in to Docker Registry
-        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u Ashav1309 --password-stdin ghcr.io
+        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login ghcr.io -u Ashav1309 --password-stdin
 
       - name: Build Docker image
         run: |
