@@ -84,8 +84,7 @@ jobs:
       - name: Publish package to PyPI Registry
         run: |
           source venv/bin/activate
-          # twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
-          twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
+          twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --repository-url ${{ secrets.TWINE_REPOSITORY_URL }} --verbose
           
   docs:
     runs-on: ubuntu-latest
