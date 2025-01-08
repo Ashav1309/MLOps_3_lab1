@@ -17,6 +17,7 @@ def load_data(file_path: str = "Credit_Default.csv") -> pd.DataFrame:
     df = pd.read_csv(file_path)
     return df
 
+
 def missing_values_analysis(df: pd.DataFrame):
     """
     Missing Values Analysis in the dataset.
@@ -49,7 +50,7 @@ def plotting_pairwise_diagrams(df: pd.DataFrame):
     Args:
         df (pd.DataFrame): Input dataset
     """
-    
+
     # Plotting pairwise distribution diagrams
     sns.pairplot(df, vars=['Income', 'Age', 'Loan', 'Default'], hue='Default')
     plt.show()
@@ -95,7 +96,7 @@ def class_balance_analysis(df: pd.DataFrame):
 
 
 def perform_eda():
-    
+
     # Load data
     df = load_data()
 
@@ -106,7 +107,7 @@ def perform_eda():
     # Missing values analysis
     print("\nMissing Values Analysis:")
     missing_values_analysis(df)
-    
+
     # Plotting pairwise distribution diagrams
     print("\nPlotting pairwise distribution diagrams:")
     plotting_pairwise_diagrams(df)
