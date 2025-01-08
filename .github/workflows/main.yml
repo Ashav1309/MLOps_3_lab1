@@ -42,7 +42,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
-          # docker push ${{ secrets.DOCKER_IMAGE }}
+          docker push ${{ secrets.DOCKER_IMAGE }}:latest
           
   build_package:
     runs-on: ubuntu-latest
