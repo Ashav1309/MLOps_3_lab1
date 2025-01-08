@@ -41,7 +41,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_IMAGE }}--build-arg branch=${{ github.ref_name }} .
+          docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
           docker push ${{ secrets.DOCKER_IMAGE }}
           
   build_package:
@@ -68,7 +68,7 @@ jobs:
           python setup.py sdist bdist_wheel
 
       - name: Upload package artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: python-packages
           path: dist/*
@@ -116,7 +116,7 @@ jobs:
           cp -r _site/* public/
 
       - name: Upload documentation artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: documentation
           path: public/
