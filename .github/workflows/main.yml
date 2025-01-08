@@ -37,12 +37,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Log in to Docker Registry
-        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login ghcr.io -u Ashav1309 --password-stdin || exit 1
+        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login ghcr.io -u ashav1309 --password-stdin || exit 1
 
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_IMAGE }} --build-arg branch=${{ github.ref_name }} .
-          docker push ashav1309/mlops_lab1
+          docker push ${{ secrets.DOCKER_IMAGE }}
           
   build_package:
     runs-on: ubuntu-latest
